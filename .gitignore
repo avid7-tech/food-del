@@ -33,3 +33,6 @@ vite.config.js
 README.md
 .eslintrc.cjs
 *.png
+*.md
+*.ts
+*.yml
