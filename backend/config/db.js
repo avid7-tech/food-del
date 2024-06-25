@@ -1,7 +1,11 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from 'mongoose';
 
 export const connectDB = async () => {
-    await mongoose.connect('mongodb+srv://foodel:<password>@cluster0.rdespwv.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(()=>console.log('DB Connection established'));
-}
-
-
+    try {
+        await mongoose.connect(process.env.MONGODB_URI);
+        console.log('MongoDB connected');
+    } catch (error) {
+        console.error('MongoDB connection error:', error.message);
+        process.exit(1); // Exit process with failure
+    }
+};

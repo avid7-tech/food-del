@@ -1,3 +1,5 @@
+
+
 # Logs
 logs
 *.log
@@ -23,7 +25,17 @@ dist-ssr
 *.sln
 *.sw?
 
+
+# by me
+*.txt
+.env
+
 package.json
 package-lock.json
-README.md
 vite.config.js
+README.md
+.eslintrc.cjs
+*.png
+*.md
+*.ts
+*.yml

@@ -1,3 +1,5 @@
+.env
+
 # Logs
 logs
 *.log
@@ -7,6 +9,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependency directories
 node_modules
 dist
 dist-ssr
@@ -23,10 +26,10 @@ dist-ssr
 *.sln
 *.sw?
 
-
-# by me
+# Custom exclusions
 *.txt
 
+# Project specific files
 package.json
 package-lock.json
 vite.config.js
@@ -36,3 +39,6 @@ README.md
 *.md
 *.ts
 *.yml
+
+# Exclude .env file
+.env

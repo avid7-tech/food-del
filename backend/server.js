@@ -13,25 +13,26 @@
 // password(ATLAS) -> GveTft0dzEL0f0Lr
 // mongodb+srv://avdheshojha7:GveTft0dzEL0f0Lr@clusterfirst.spee3gr.mongodb.net/?       retryWrites=true&w=majority&appName=ClusterFirst
 
+import dotenv from 'dotenv'; 
 import express from "express";
 import cors from "cors";
 import {connectDB} from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js"
+import mongoose from 'mongoose';
 
-
+dotenv.config();
 
 // app config
 const app = express();
-const port = 4000;
+const port = process.env.PORT || 4000;
 
 // add middleware
 // request from frontend to backend, that will be parsed using this json
 app.use(express.json());
 app.use(cors());
 
-// db connection
+// Call connectDB function to establish MongoDB connection
 connectDB();
-
 // api end point
 app.use("/api/food", foodRouter);
 app.use("/images", express.static('uploads'));
