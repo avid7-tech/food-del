@@ -12,13 +12,16 @@
 
 // password(ATLAS) -> GveTft0dzEL0f0Lr
 // mongodb+srv://avdheshojha7:GveTft0dzEL0f0Lr@clusterfirst.spee3gr.mongodb.net/?       retryWrites=true&w=majority&appName=ClusterFirst
-
+import "dotenv/config"
 import dotenv from 'dotenv'; 
 import express from "express";
 import cors from "cors";
 import {connectDB} from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js"
 import mongoose from 'mongoose';
+import userRouter from './routes/userRoute.js';
+import cartRouter from "./routes/cartRoute.js"
+import orderRouter from "./routes/orderRoute.js"
 
 dotenv.config();
 
@@ -36,6 +39,10 @@ connectDB();
 // api end point
 app.use("/api/food", foodRouter);
 app.use("/images", express.static('uploads'));
+app.use("/api/user", userRouter);
+app.use("/images",express.static('uploads'))
+app.use("/api/cart", cartRouter)
+app.use("/api/order",orderRouter)
 
 // using this we can request the data from the server
 app.get("/", (req, res)=>{

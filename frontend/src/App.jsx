@@ -1,12 +1,16 @@
 // import React from 'react'
-import Navbar from "./components/Navbar/Navbar";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home/Home";
-import Cart from "./pages/Cart/Cart";
-import PlaceOrder from "./pages/PlaceOrder/PlaceOrder";
-import Footer from "./components/Footer/footer";
-import { useState } from "react";
-import LoginPopup from './components/LoginPopup/LoginPopup';
+import { useState } from 'react'
+import Home from './pages/Home/Home'
+import Footer from './components/Footer/Footer'
+import Navbar from './components/Navbar/Navbar'
+import { Route, Routes } from 'react-router-dom'
+import Cart from './pages/Cart/Cart'
+import LoginPopup from './components/LoginPopup/LoginPopup'
+import PlaceOrder from './pages/PlaceOrder/PlaceOrder'
+import MyOrders from './pages/MyOrders/MyOrders'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Verify from './pages/Verify/Verify'
 
 // a functional component named App
 const App = () => {
@@ -16,6 +20,7 @@ const App = () => {
 
   return (
     <>
+    <ToastContainer/>
     {/* if the value of showLogin is false, it will render <> </> (means just show the rest of the layout only!), which is a shorthand for a React fragment. */}
     {showLogin ? <LoginPopup setShowLogin={setShowLogin} /> :<></>}
       {/* renders the main component */}
@@ -26,12 +31,14 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/order" element={<PlaceOrder />} />
+          <Route path='/myorders' element={<MyOrders />}/>
+          <Route path='/verify' element={<Verify />}/>
         </Routes>
       </div>
       <Footer />
     </>
-  );
-};
+  )
+}
 
 // App.propTypes = {
 //   Cart: PropTypes.elementType.isRequired,
