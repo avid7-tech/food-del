@@ -1,24 +1,9 @@
-// DEPENDENCIES
-// express -> 
-// mongoose -> help us connect to the database
-// jsonwebtoken -> authentication system
-// bcrypt -> encrypt user's data and store it in the database
-// cors -> gives permission to our fronted to connect with backend
-// dotenv -> use environment variables
-// multer -> create image store system
-// stripe -> add paymeny gateways on webpage
-// validator -> check email id or password validity
-// nodemon -> using this when we save our project, server is restarted
-
-// password(ATLAS) -> GveTft0dzEL0f0Lr
-// mongodb+srv://avdheshojha7:GveTft0dzEL0f0Lr@clusterfirst.spee3gr.mongodb.net/?       retryWrites=true&w=majority&appName=ClusterFirst
 import "dotenv/config"
 import dotenv from 'dotenv'; 
 import express from "express";
 import cors from "cors";
 import {connectDB} from "./config/db.js";
 import foodRouter from "./routes/foodRoute.js"
-import mongoose from 'mongoose';
 import userRouter from './routes/userRoute.js';
 import cartRouter from "./routes/cartRoute.js"
 import orderRouter from "./routes/orderRoute.js"
@@ -37,10 +22,9 @@ app.use(cors());
 // Call connectDB function to establish MongoDB connection
 connectDB();
 // api end point
+app.use("/images", express.static('uploads'))
 app.use("/api/food", foodRouter);
-app.use("/images", express.static('uploads'));
 app.use("/api/user", userRouter);
-app.use("/images",express.static('uploads'))
 app.use("/api/cart", cartRouter)
 app.use("/api/order",orderRouter)
 
