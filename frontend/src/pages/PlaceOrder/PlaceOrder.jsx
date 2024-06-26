@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './PlaceOrder.css'
-import StoreContext from '../../Context/StoreContext'
+import { StoreContext } from '../../Context/StoreContext'
 import { assets } from '../../assets/assets';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
@@ -78,7 +78,7 @@ const PlaceOrder = () => {
         else if (getTotalCartAmount() === 0) {
             navigate('/cart')
         }
-    }, [token, getTotalCartAmount, navigate])
+    }, [token])
 
     return (
         <form onSubmit={placeOrder} className='place-order'>
